@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Attender</title>
+
+     <!--Linking CSS file tp HTML-->
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.4/xlsx.full.min.js"></script>
+    <!--Linking Flowbite Library-->
+    <link href="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.css" rel="stylesheet" />
+
+</head>
+<body>
+    
+   <div class=" bg-white dark:bg-gray-800 h-screen flex items-center justify-center grid grid-flow-col grid-rows-1">
+    <!--SIDE BAR-->
+
+    <button data-drawer-target="cta-button-sidebar" data-drawer-toggle="cta-button-sidebar" aria-controls="cta-button-sidebar" type="button" class="inline-flex items-center p-2 mt-2 ms-3 text-sm text-gray-500 rounded-lg sm:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600">
+        <span class="sr-only">Open sidebar</span>
+        <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+        <path clip-rule="evenodd" fill-rule="evenodd" d="M2 4.75A.75.75 0 012.75 4h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 4.75zm0 10.5a.75.75 0 01.75-.75h7.5a.75.75 0 010 1.5h-7.5a.75.75 0 01-.75-.75zM2 10a.75.75 0 01.75-.75h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 10z"></path>
+        </svg>
+     </button>
+     
+     <aside id="cta-button-sidebar" class="fixed top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0" aria-label="Sidebar">
+      <div class="h-full px-3 py-4 overflow-y-auto bg-gray-50 dark:bg-gray-800">
+         <ul class="space-y-2 font-medium">
+            <li>
+               <a href="tr_attendance.html" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                  <svg class="w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 21">
+                     <path d="M16.975 11H10V4.025a1 1 0 0 0-1.066-.998 8.5 8.5 0 1 0 9.039 9.039.999.999 0 0 0-1-1.066h.002Z"/>
+                     <path d="M12.5 0c-.157 0-.311.01-.565.027A1 1 0 0 0 11 1.02V10h8.975a1 1 0 0 0 1-.935c.013-.188.028-.374.028-.565A8.51 8.51 0 0 0 12.5 0Z"/>
+                  </svg>
+                  <span class="ms-3">Attendance
+                  </span>
+               </a>
+            </li>
+            <li>
+               <a href="tr_result.html" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                  <svg class="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 19V4a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v13H7a2 2 0 0 0-2 2Zm0 0a2 2 0 0 0 2 2h12M9 3v14m7 0v4"/>
+                   </svg>
+                   
+                  <span class="flex-1 ms-3 whitespace-nowrap">Result</span>
+                  <span class="inline-flex items-center justify-center px-2 ms-3 text-sm font-medium text-gray-800 bg-gray-100 rounded-full dark:bg-gray-700 dark:text-gray-300">Beta</span>
+               </a>
+            </li>
+            <li>
+               <a href="tr_timetable.html" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                  <svg class="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 10h16m-8-3V4M7 7V4m10 3V4M5 20h14a1 1 0 0 0 1-1V7a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1Zm3-7h.01v.01H8V13Zm4 0h.01v.01H12V13Zm4 0h.01v.01H16V13Zm-8 4h.01v.01H8V17Zm4 0h.01v.01H12V17Zm4 0h.01v.01H16V17Z"/>
+                   </svg>
+                   
+                  <span class="flex-1 ms-3 whitespace-nowrap">Timetable</span>
+                  <span class="inline-flex items-center justify-center w-3 h-3 p-3 ms-3 text-sm font-medium text-blue-800 bg-blue-100 rounded-full dark:bg-blue-900 dark:text-blue-300">3</span>
+               </a>
+            </li>
+            <li>
+              <a href="tr_grievance.html" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+               <svg class="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17h6l3 3v-3h2V9h-2M4 4h11v8H9l-3 3v-3H4V4Z"/>
+                </svg>
+                
+                 <span class="flex-1 ms-3 whitespace-nowrap">Grievance</span>
+              </a>
+           </li>
+            <li>
+             <a href="tr_notes.html" class="flex items-center p-2 text-gray-900 transition duration-75 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 dark:text-white group">
+               <svg class="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5.365V3m0 2.365a5.338 5.338 0 0 1 5.133 5.368v1.8c0 2.386 1.867 2.982 1.867 4.175 0 .593 0 1.193-.538 1.193H5.538c-.538 0-.538-.6-.538-1.193 0-1.193 1.867-1.789 1.867-4.175v-1.8A5.338 5.338 0 0 1 12 5.365Zm-8.134 5.368a8.458 8.458 0 0 1 2.252-5.714m14.016 5.714a8.458 8.458 0 0 0-2.252-5.714M8.54 17.901a3.48 3.48 0 0 0 6.92 0H8.54Z"/>
+                </svg>
+                
+                <span class="ms-3">Notice</span>
+             </a>
+          </li>
+          <li>
+             <a href="tr_lectures.html" class="flex items-center p-2 text-gray-900 transition duration-75 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 dark:text-white group">
+                <svg class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 18">
+                   <path d="M18 0H6a2 2 0 0 0-2 2h14v12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2Z"/>
+                   <path d="M14 4H2a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2ZM2 16v-6h12v6H2Z"/>
+                </svg>
+                <span class="ms-3">Lectures</span>
+             </a>
+          </li>
+          <li>
+           <a href="index.html" class="flex items-center p-2 text-gray-900 transition duration-75 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 dark:text-white group">
+                <svg class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 12H8m12 0-4 4m4-4-4-4M9 4H7a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h2"/>
+                  </svg>
+              <span class="ms-3">Exit</span>
+           </a>
+        </li>
+         </ul>
+         <div id="dropdown-cta" class="p-4 mt-6 rounded-lg bg-blue-50 dark:bg-blue-900" role="alert">
+            <div class="flex items-center mb-3">
+               <span class="bg-orange-100 text-orange-800 text-sm font-semibold me-2 px-2.5 py-0.5 rounded dark:bg-orange-200 dark:text-orange-900">Beta</span>
+               <button type="button" class="ms-auto -mx-1.5 -my-1.5 bg-blue-50 inline-flex justify-center items-center w-6 h-6 text-blue-900 rounded-lg focus:ring-2 focus:ring-blue-400 p-1 hover:bg-blue-200 dark:bg-blue-900 dark:text-blue-400 dark:hover:bg-blue-800" data-dismiss-target="#dropdown-cta" aria-label="Close">
+                  <span class="sr-only">Close</span>
+                  <svg class="w-2.5 h-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+                  </svg>
+               </button>
+            </div>
+            <p class="mb-3 text-sm text-blue-800 dark:text-blue-400">
+               You can add attendance on local storage.
+            </p>
+            <a class="text-sm text-blue-800 underline font-medium hover:text-blue-900 dark:text-blue-400 dark:hover:text-blue-300" href="#">Turn new navigation off</a>
+         </div>
+      </div>
+   </aside>
+     <div class=" bg-white dark:bg-gray-800 h-screen flex items-center justify-center grid grid-flow-col grid-rows-1">
+    
+    <!--PAGE START FROM HERE-->
+   
+    
+     
+        <nav class="bg-white shadow p-4 flex justify-between items-center">
+            <h1 class="text-xl font-bold">Admin Panel</h1>
+          
+        </nav>
+    
+        <!-- Admin Dashboard -->
+        <section class="p-4">
+            <div class="max-w-6xl mx-auto mt-6">
+                <h2 class="text-lg font-semibold mb-4">Admin Dashboard</h2>
+                <div id="adminGrievanceList" class="space-y-4"></div>
+            </div>
+        </section>
+    
+        <script>
+            let grievances = JSON.parse(localStorage.getItem('grievances')) || [];
+    
+            function renderAdminGrievances() {
+                const list = document.getElementById('adminGrievanceList');
+                list.innerHTML = '';
+                grievances.forEach(g => {
+                    const item = document.createElement('div');
+                    item.className = 'bg-white shadow p-4 rounded';
+                    item.innerHTML = `
+                        <p><strong>Name:</strong> ${g.name}</p>
+                        <p><strong>Roll No:</strong> ${g.rollNo}</p>
+                        <p><strong>Category:</strong> ${g.category}</p>
+                        <p><strong>Description:</strong> ${g.description}</p>
+                        <p><strong>Status:</strong> <span class="${getStatusColor(g.status)}">${g.status}</span></p>
+                        <textarea id="response-${g.id}" class="w-full border mt-2 px-2 py-1 rounded"
+                            placeholder="Admin Response">${g.response}</textarea>
+                        <select id="status-${g.id}" class="w-full border mt-2 px-2 py-1 rounded">
+                            <option ${g.status === 'Pending' ? 'selected' : ''}>Pending</option>
+                            <option ${g.status === 'In Process' ? 'selected' : ''}>In Process</option>
+                            <option ${g.status === 'Resolved' ? 'selected' : ''}>Resolved</option>
+                        </select>
+                        <button onclick="updateGrievance(${g.id})"
+                            class="bg-green-500 text-white px-4 py-2 mt-2 rounded">Update</button>
+                    `;
+                    list.appendChild(item);
+                });
+            }
+    
+            function updateGrievance(id) {
+                const response = document.getElementById(`response-${id}`).value;
+                const status = document.getElementById(`status-${id}`).value;
+    
+                grievances = grievances.map(g => {
+                    if (g.id === id) {
+                        return { ...g, response, status };
+                    }
+                    return g;
+                });
+    
+                localStorage.setItem('grievances', JSON.stringify(grievances));
+                alert('Grievance updated!');
+                renderAdminGrievances();
+            }
+    
+            function getStatusColor(status) {
+                switch (status) {
+                    case 'Pending': return 'text-yellow-500';
+                    case 'In Process': return 'text-blue-500';
+                    case 'Resolved': return 'text-green-500';
+                    default: return '';
+                }
+            }
+    
+            renderAdminGrievances();
+        </script>
+  
+
+    
+    <script>
+        // On page load or when changing themes, best to add inline in `head` to avoid FOUC
+        if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark')
+        }
+    </script>
+
+    <!--Linking Flowbite Js file-->
+    <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.js"></script>
+    
+</body>
+</html>
